@@ -5,7 +5,7 @@ package ru.mipt.diht.students.feezboom.CollectionsQL.implementation;
  **/
 public class UnionStmt {
 
-    public <T> FromStmt<T> from(Iterable<T> list) {
+    public final <T> FromStmt<T> from(Iterable<T> list) {
         throw new UnsupportedOperationException();
     }
 }

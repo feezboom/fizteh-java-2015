@@ -25,6 +25,7 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
+        @SuppressWarnings("checkstyle:magicnumber")
         Iterable<Statistics> statistics =
                 from(list(
                         student("ivanov", LocalDate.parse("1986-08-06"), "494"),
@@ -50,30 +51,31 @@ public class Main {
 
         private final String group;
 
-        public String getName() {
+        public final String getName() {
             return name;
         }
 
-        public Student(String name, LocalDate dateOfBith, String group) {
+        @SuppressWarnings("checkstyle:hiddenfield")
+        public Student(String name, LocalDate dateOfBirth, String group) {
             this.name = name;
-            this.dateOfBith = dateOfBith;
+            this.dateOfBith = dateOfBirth;
             this.group = group;
         }
 
-        public LocalDate getDateOfBith() {
+        public final LocalDate getDateOfBirth() {
             return dateOfBith;
         }
 
-        public String getGroup() {
+        public final String getGroup() {
             return group;
         }
 
-        public long age() {
-            return ChronoUnit.YEARS.between(getDateOfBith(), LocalDateTime.now());
+        public final long age() {
+            return ChronoUnit.YEARS.between(getDateOfBirth(), LocalDateTime.now());
         }
 
-        public static Student student(String name, LocalDate dateOfBith, String group) {
-            return new Student(name, dateOfBith, group);
+        public static Student student(String name, LocalDate dateOfBirth, String group) {
+            return new Student(name, dateOfBirth, group);
         }
     }
 
@@ -84,18 +86,19 @@ public class Main {
         private final Long count;
         private final Long age;
 
-        public String getGroup() {
+        public final String getGroup() {
             return group;
         }
 
-        public Long getCount() {
+        public final Long getCount() {
             return count;
         }
 
-        public Long getAge() {
+        public final Long getAge() {
             return age;
         }
 
+        @SuppressWarnings("checkstyle:hiddenfield")
         public Statistics(String group, Long count, Long age) {
             this.group = group;
             this.count = count;
@@ -103,7 +106,7 @@ public class Main {
         }
 
         @Override
-        public String toString() {
+        public final String toString() {
             return "Statistics{"
                     + "group='" + group + '\''
                     + ", count=" + count

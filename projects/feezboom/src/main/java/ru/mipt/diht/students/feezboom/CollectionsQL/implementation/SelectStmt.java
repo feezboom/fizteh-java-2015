@@ -15,15 +15,15 @@ public class SelectStmt<T, R> {
         throw new UnsupportedOperationException();
     }
 
-    public WhereStmt<T, R> where(Predicate<T> predicate) {
+    public final WhereStmt<T, R> where(Predicate<T> predicate) {
         throw new UnsupportedOperationException();
     }
 
-    public Iterable<R> execute() {
+    public final Iterable<R> execute() {
         throw new UnsupportedOperationException();
     }
 
-    public Stream<R> stream() {
+    public final Stream<R> stream() {
         throw new UnsupportedOperationException();
     }
 
@@ -38,17 +38,16 @@ public class SelectStmt<T, R> {
             throw new UnsupportedOperationException();
         }
 
-        public WhereStmt<T, R> having(Predicate<R> condition) {
+        public final WhereStmt<T, R> having(Predicate<R> condition) {
             throw new UnsupportedOperationException();
         }
 
-        public WhereStmt<T, R> limit(int amount) {
+        public final WhereStmt<T, R> limit(int amount) {
             throw new UnsupportedOperationException();
         }
 
-        public UnionStmt union() {
+        public final UnionStmt union() {
             throw new UnsupportedOperationException();
         }
     }
-
 }
