@@ -3,25 +3,31 @@ package ru.mipt.diht.students.feezboom.CollectionsQL.implementation;
 /**
  * * Created by avk on 15.11.15.
  **/
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Stream;
 
 public class FromStmt<T> {
+    private List<T> elements;
+
+    public FromStmt(Iterable<T> iterable) {
+        elements = new ArrayList<>();
+        for (T element : iterable) {
+            elements.add(element);
+        }
+    }
+
     public static <T> FromStmt<T> from(Iterable<T> iterable) {
-        throw new UnsupportedOperationException();
+        return new FromStmt<>(iterable);
     }
 
-    public static <T> FromStmt<T> from(Stream<T> stream) {
+    @SafeVarargs
+    public final <R> SelectStmt<T, R> select(Class<R> classToReturn, Function<T, ?>... functions) {
         throw new UnsupportedOperationException();
     }
 
     @SafeVarargs
-    public final <R> SelectStmt<T, R> select(Class<R> clazz, Function<T, ?>... s) {
-        throw new UnsupportedOperationException();
-    }
-
-    @SafeVarargs
-    public final <R> SelectStmt<T, R> selectDistinct(Class<R> clazz, Function<T, ?>... s) {
+    public final <R> SelectStmt<T, R> selectDistinct(Class<R> classToReturn, Function<T, ?>... functions) {
         throw new UnsupportedOperationException();
     }
 }

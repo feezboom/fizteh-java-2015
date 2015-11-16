@@ -1,8 +1,6 @@
 package ru.mipt.diht.students.feezboom.CollectionsQL;
 
-/**
- * * Created by avk on 15.11.15.
- **/
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -19,13 +17,8 @@ import static ru.mipt.diht.students.feezboom.CollectionsQL.implementation.FromSt
 
 public class Main {
 
-    /**
-     * Make this code work!
-     *
-     * @param args
-     */
+    @SuppressWarnings("checkstyle:magicnumber")
     public static void main(String[] args) {
-        @SuppressWarnings("checkstyle:magicnumber")
         Iterable<Statistics> statistics =
                 from(list(
                         student("ivanov", LocalDate.parse("1986-08-06"), "494"),
