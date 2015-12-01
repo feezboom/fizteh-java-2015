@@ -1,7 +1,7 @@
 package ru.mipt.diht.students.feezboom.CollectionsQL.implementation;
 
 /**
- * * Created by avk on 15.11.15.
+ ** Created by avk on 15.11.15.
  **/
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -15,14 +15,21 @@ public class SelectStmt<T, R> {
 
     private List<T> elements;
     private Class classToReturn;
+    private boolean isDistinct;
+    private Function<T, ?>[] functions;
 
+    @SuppressWarnings("checkstyle:hiddenfield")
     @SafeVarargs
-    public SelectStmt(List<T> ourElements, Class<R> clazz, boolean isDistinct, Function<T, R>... s) {
+    public SelectStmt(List<T> ourElements, Class<R> clazz, boolean isDistinct, Function<T, ?>... functions) {
+        //Elements
         this.elements = new ArrayList<>();
         this.elements.addAll(ourElements.stream().collect(Collectors.toList()));
+        //Return class
         this.classToReturn = clazz;
-
-        throw new UnsupportedOperationException();
+        //Distinct or not
+        this.isDistinct = isDistinct;
+        //Functions to apply
+        this.functions = functions;
     }
 
     public final WhereStmt<T, R> where(Predicate<T> predicate) {
@@ -30,7 +37,7 @@ public class SelectStmt<T, R> {
     }
 
     public final Iterable<R> execute() {
-        throw new UnsupportedOperationException();
+        return this.elements;
     }
 
     public final Stream<R> stream() {

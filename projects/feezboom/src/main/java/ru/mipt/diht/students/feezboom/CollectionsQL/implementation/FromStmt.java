@@ -23,11 +23,11 @@ public class FromStmt<T> {
 
     @SafeVarargs
     public final <R> SelectStmt<T, R> select(Class<R> classToReturn, Function<T, ?>... functions) {
-        throw new UnsupportedOperationException();
+        return new SelectStmt<>(elements, classToReturn, false, functions);
     }
 
     @SafeVarargs
     public final <R> SelectStmt<T, R> selectDistinct(Class<R> classToReturn, Function<T, ?>... functions) {
-        throw new UnsupportedOperationException();
+        return new SelectStmt<>(elements, classToReturn, true, functions);
     }
 }

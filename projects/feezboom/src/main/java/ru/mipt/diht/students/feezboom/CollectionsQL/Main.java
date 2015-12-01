@@ -19,7 +19,7 @@ public class Main {
 
     @SuppressWarnings("checkstyle:magicnumber")
     public static void main(String[] args) {
-        Iterable<Statistics> statistics =
+/*        Iterable<Statistics> statistics =
                 from(list(
                         student("ivanov", LocalDate.parse("1986-08-06"), "494"),
                         student("ivanov", LocalDate.parse("1986-08-06"), "494")))
@@ -34,6 +34,13 @@ public class Main {
                         .selectDistinct(Statistics.class, s -> "all", count(s -> 1), avg(Student::age))
                         .execute();
         System.out.println(statistics);
+*/      Iterable<Statistics> statistics =
+                from(list(
+                        student("ivanov", LocalDate.parse("1986-08-06"), "494"),
+                        student("ivanov", LocalDate.parse("1986-08-06"), "494")))
+                        .select(Statistics.class, Student::getGroup, count(Student::getGroup), avg(Student::age))
+                        .execute();
+
     }
 
 
@@ -72,7 +79,6 @@ public class Main {
         }
     }
 
-
     public static class Statistics {
 
         private final String group;
@@ -107,5 +113,4 @@ public class Main {
                     + '}';
         }
     }
-
 }
