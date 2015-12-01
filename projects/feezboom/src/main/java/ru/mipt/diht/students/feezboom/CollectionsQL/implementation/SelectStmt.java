@@ -37,7 +37,7 @@ public class SelectStmt<T, R> {
     }
 
     public final Iterable<R> execute() {
-        return this.elements;
+        return new ArrayList<>();
     }
 
     public final Stream<R> stream() {
