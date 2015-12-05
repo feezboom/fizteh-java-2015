@@ -13,7 +13,7 @@ import static ru.mipt.diht.students.feezboom.CollectionsQL.Conditions.rlike;
 import static ru.mipt.diht.students.feezboom.CollectionsQL.OrderByConditions.asc;
 import static ru.mipt.diht.students.feezboom.CollectionsQL.OrderByConditions.desc;
 import static ru.mipt.diht.students.feezboom.CollectionsQL.Sources.list;
-import static ru.mipt.diht.students.feezboom.CollectionsQL.implementation.FromStmt.from;
+import static ru.mipt.diht.students.feezboom.CollectionsQL.implementation.Statements.FromStmt.from;
 
 
 public class Main {
@@ -21,6 +21,7 @@ public class Main {
 @SuppressWarnings("checkstyle:magicnumber")
 public static void main(String[] args) {
     Iterable<Statistics>  statistics = new ArrayList<>();
+
     statistics =
         from(list(
                 student("ivanov", LocalDate.parse("1986-08-06"), "494"),
@@ -35,8 +36,6 @@ public static void main(String[] args) {
                 .from(list(student("ivanov", LocalDate.parse("1985-08-06"), "494")))
                 .selectDistinct(Statistics.class, s -> "all", count(s -> 1), avg(Student::age))
                 .execute();
-
-
 
     statistics =
             from(list(student("ivanov", LocalDate.parse("1986-08-06"), "494"),

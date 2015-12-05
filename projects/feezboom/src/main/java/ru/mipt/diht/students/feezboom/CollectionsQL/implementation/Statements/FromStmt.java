@@ -1,4 +1,4 @@
-package ru.mipt.diht.students.feezboom.CollectionsQL.implementation;
+package ru.mipt.diht.students.feezboom.CollectionsQL.implementation.Statements;
 
 /**
  * * Created by avk on 15.11.15.

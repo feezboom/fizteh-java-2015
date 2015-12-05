@@ -7,7 +7,7 @@ import java.sql.*;
 /**
  * * Created by avk on 05.12.15.
  **/
-public class Lesson5_12_0 {
+public class Lesson5120 {
 
 
     public static void main(String[] args) throws SQLException {
@@ -16,7 +16,8 @@ public class Lesson5_12_0 {
 //        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/lesson?a=4&b=4");
         try (Connection connection = DriverManager.getConnection("jdbc:h2:/tmp/lesson")) {
             Statement createTableStatement = connection.createStatement();
-            int updates = createTableStatement.executeUpdate("CREATE TABLE IF NOT EXISTS users (name VARCHAR(255) not null, age int not null)");
+            int updates = createTableStatement.executeUpdate("CREATE TABLE IF NOT EXISTS"
+                    + " users (name VARCHAR(255) not null, age int not null)");
             System.out.println("Updates : " + updates);
 
 //            if (updates > 0) {

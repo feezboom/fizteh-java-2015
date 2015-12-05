@@ -9,7 +9,7 @@ import java.util.concurrent.*;
  * * Created by avk on 05.12.15.
  **/
 @SuppressWarnings("checkstyle:magicnumber")
-public class Lesson5_12_1 {
+public class Lesson5121 {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         final int threads = 5;
         ExecutorService executorService = Executors.newFixedThreadPool(threads);
@@ -25,7 +25,7 @@ public class Lesson5_12_1 {
             });
             futures.add(future);
         }
-        for(Future<Integer> future : futures) {
+        for (Future<Integer> future : futures) {
             System.out.println(future.get());
         }
         executorService.shutdown();
