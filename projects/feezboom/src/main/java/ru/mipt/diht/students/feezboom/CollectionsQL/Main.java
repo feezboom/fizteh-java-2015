@@ -4,6 +4,7 @@ package ru.mipt.diht.students.feezboom.CollectionsQL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 import static ru.mipt.diht.students.feezboom.CollectionsQL.Aggregates.avg;
 import static ru.mipt.diht.students.feezboom.CollectionsQL.Aggregates.count;
@@ -19,10 +20,11 @@ public class Main {
 
 @SuppressWarnings("checkstyle:magicnumber")
 public static void main(String[] args) {
-    Iterable<Statistics> statistics =
+    Iterable<Statistics>  statistics = new ArrayList<>();
+    statistics =
         from(list(
                 student("ivanov", LocalDate.parse("1986-08-06"), "494"),
-                student("ivanov", LocalDate.parse("1986-08-06"), "494")))
+                student("zuev", LocalDate.parse("1986-08-06"), "494")))
                 .select(Statistics.class, Student::getGroup, count(Student::getGroup), avg(Student::age))
                 .where(rlike(Student::getName, ".*ov").and(s -> s.age() > 20))
                 .groupBy(Student::getGroup)
@@ -33,15 +35,16 @@ public static void main(String[] args) {
                 .from(list(student("ivanov", LocalDate.parse("1985-08-06"), "494")))
                 .selectDistinct(Statistics.class, s -> "all", count(s -> 1), avg(Student::age))
                 .execute();
-    System.out.println(statistics);
+
+
 
     statistics =
-            from(list(
-                    student("ivanov", LocalDate.parse("1986-08-06"), "494"),
+            from(list(student("ivanov", LocalDate.parse("1986-08-06"), "494"),
                     student("ivanov", LocalDate.parse("1986-08-06"), "494")))
                     .select(Statistics.class, Student::getGroup, count(Student::getGroup), avg(Student::age))
                     .execute();
 
+    System.out.println(statistics);
 }
 
 

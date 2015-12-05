@@ -14,30 +14,23 @@ import java.util.stream.Stream;
 public class SelectStmt<T, R> {
 
     private List<T> elements;
-    private Class classToReturn;
+    private Class<R> classToReturn;
     private boolean isDistinct;
-    private Function<T, ?>[] functions;
+    private Function<T, ?>[] ourFunctions;
 
-    @SuppressWarnings("checkstyle:hiddenfield")
     @SafeVarargs
-    public SelectStmt(List<T> ourElements, Class<R> clazz, boolean isDistinct, Function<T, ?>... functions) {
-        //Elements
+    @SuppressWarnings("checkstyle:hiddenfield")
+    public SelectStmt(List<T> ourElements, Class<R> ourClass, boolean isDistinct, Function<T, ?>... functions) {
+        //Elements from FromStmt
         this.elements = new ArrayList<>();
         this.elements.addAll(ourElements.stream().collect(Collectors.toList()));
-        //Return class
-        this.classToReturn = clazz;
-        //Distinct or not
+        this.classToReturn = ourClass;
         this.isDistinct = isDistinct;
-        //Functions to apply
-        this.functions = functions;
+        this.ourFunctions = functions;
     }
 
     public final WhereStmt<T, R> where(Predicate<T> predicate) {
         throw new UnsupportedOperationException();
-    }
-
-    public final Iterable<R> execute() {
-        return new ArrayList<>();
     }
 
     public final Stream<R> stream() {
@@ -66,5 +59,11 @@ public class SelectStmt<T, R> {
         public final UnionStmt union() {
             throw new UnsupportedOperationException();
         }
+    }
+
+    public final Iterable<R> execute() {
+        //Here we return result of query
+
+        return new ArrayList<>();
     }
 }
