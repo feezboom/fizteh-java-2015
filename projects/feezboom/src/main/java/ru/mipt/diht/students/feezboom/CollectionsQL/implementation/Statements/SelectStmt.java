@@ -63,7 +63,10 @@ public class SelectStmt<T, R> {
 
     public final Iterable<R> execute() {
         //Here we return result of query
-
+        for (T element : elements) {
+            //todo
+            System.out.println("Hello, Checkstyle!");
+        }
         return new ArrayList<>();
     }
 }

@@ -8,17 +8,19 @@ import java.util.function.Function;
  **/
 @SuppressWarnings("checkstyle:designforextension")
 public class Avg<T> implements Aggregator<T, Double> {
-    private Function<T, Double> ourFunction;
+    private Function<T, ? extends Number> ourFunction;
+
+    public Avg(Function<T, ? extends Number> expression) {
+        ourFunction = expression;
+    }
 
     @Override
     public Double apply(List<T> elements) {
         double avg = 0;
-        int numberOfElements = 0;
         for (T element : elements) {
-            numberOfElements++;
-            avg += ourFunction.apply(element);
+            avg = avg + ourFunction.apply(element).doubleValue();
         }
-        return avg / numberOfElements;
+        return avg / elements.size();
     }
 
     @Override
