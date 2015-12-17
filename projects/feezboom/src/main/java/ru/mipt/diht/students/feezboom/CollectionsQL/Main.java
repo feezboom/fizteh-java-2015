@@ -40,7 +40,7 @@ public static void main(String[] args) {
     statistics =
             from(list(student("ivanov", LocalDate.parse("1986-08-06"), "494"),
                     student("ivanov", LocalDate.parse("1986-08-06"), "494")))
-                    .select(Statistics.class, Student::getGroup, count(Student::getGroup), avg(Student::age))
+                    .select(Statistics.class, Student::getGroup, Student::age)
                     .execute();
 
     System.out.println(statistics);
